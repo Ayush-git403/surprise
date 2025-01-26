@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #cce7e5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            line-height: 1.6;
+            color: #333;
+            overflow: hidden;
+        }
+        .card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            padding: 40px;
+            max-width: 600px;
+            animation: float 3s ease-in-out infinite;
+        }
+        h1 {
+            color: #ff6b6b;
+            margin-bottom: 20px;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .confetti {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: #ff6b6b;
+            opacity: 0.7;
+            transform: rotate(45deg);
+            animation: fall 2s linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: rotate(45deg) translateY(0px); }
+            100% { transform: rotate(45deg) translateY(100vh); }
+        }
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .popup-content h2 {
+            margin-top: 0;
+        }
+        .popup-content button {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .popup-content button:hover {
+            background-color: #ff99cc;
+        }
+        #checkmate-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ff2f2f;
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 1;
+        }
+        #checkmate-button:hover {
+            background-color: #ff99cc;
+        }
+    </style>
+</head>
+<body>
+    <button id="checkmate-button">Checkmate Me</button>
+    <div class="card" style="display: none;">
+        <h1>Happy Birthday Divyaaa💞!</h1>
+        <p>
+            To my pretty miss DIVA Divyaa, Happy happy happy bdayyy😚😚
+            . 
+            From our late-night deep talks ,to my roasts that still make us laugh, you've been my rock and my joy.
+        </p>
+        <p>
+           may this year bring you joy and make you crack your exam.
+           you're so sweet so lovely heheh🥰, only bs tum mujhe thoda baat kro, bhot bz ho jati ajkl😭
+        </p>
+        <p>
+            Here's to another year of crazy memories, supporting each other. Cheers to you! 🎉🥂meowwwwww🐱🐱🐱🐱🐱🐈🐈
+        </p>
+    </div>
+
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <h2>Checkmate!</h2>
+            <p>Ha! You fell into my trap!
+                thought you can won 😏😏haha </p>
+            <button id="close-button">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function createConfetti() {
+            for(let i =  0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = Math.random() * -100 + '%';
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                document.body.appendChild(confetti);
+            }
+        }
+        createConfetti();
+
+        const checkmateButton = document.getElementById('checkmate-button');
+        const popup = document.getElementById('popup');
+        const closeButton = document.getElementById('close-button');
+        const card = document.querySelector('.card');
+
+        checkmateButton.addEventListener('click', () => {
+            popup.style.display = 'flex';
+            card.style.display = 'block';
+            checkmateButton.style.display = 'none'; // Hide the button after clicking
+        });
+
+        closeButton.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
